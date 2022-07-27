@@ -13,9 +13,9 @@ Run the following in terminal:
 sudo apt install libsndfile-dev portaudio19-dev libssl-dev libprotobuf-dev libgrpc++-dev liblog4cpp5-dev
 ```
 
-## Boost 1.5.4
+## Boost 1.54
 
-This pWebSocketServer will only build using Boost version 1.5.4 and below.
+This pWebSocketServer will only build using Boost version 1.54 and below.
 
 ```
 cd
