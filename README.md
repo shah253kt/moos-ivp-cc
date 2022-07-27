@@ -1,17 +1,30 @@
 # MOOS-IvP CC
 
-The home of my extensions and trinkets related to MOOS-IvP
+Original repo:
+[https://github.com/HeroCC/moos-ivp-cc](https://github.com/HeroCC/moos-ivp-cc)
 
-## Docker
-
-If you'd rather use my tree as a docker image, you can pull it from DockerHub like so: `docker pull herocc/moos-ivp-cc:latest`. To see all the versions avaliable, [click here](https://hub.docker.com/r/herocc/moos-ivp-cc/tags). Some missions in this repo are designed with docker in mind, others are not; docker missions are noted if so.
+I was building the library for Raspberry Pi 4 using the original instruction, but failed. The main one I use for now is pWebSocketServer, so I disabled the ones I did not use from compiling.
 
 ## Dependencies
 
-The libraries this tree uses have dependencies of their own, in addition to normal MOOS and Aquaticus dependencies. You should make sure your compiler of choice supports C++11 or greater, and then install them like so:
- * MacPorts: `sudo port install portaudio libsndfile boost boost-build protobuf3-cpp grpc log4cpp`
- * Homebrew: `brew install log4cpp opus protobuf portaudio openssl boost pkgconfig`
- * Debian Variants: `sudo apt install libsndfile-dev libboost-all-dev portaudio19-dev libssl-dev libprotobuf-dev libgrpc++-dev liblog4cpp5-dev`
+Run the following in terminal:
+
+```
+sudo apt install libsndfile-dev portaudio19-dev libssl-dev libprotobuf-dev libgrpc++-dev liblog4cpp5-dev
+```
+
+## Boost 1.5.4
+
+This pWebSocketServer will only build using Boost version 1.5.4 and below.
+
+```
+cd
+wget http://downloads.sourceforge.net/project/boost/boost/1.54.0/boost_1_54_0.tar.gz
+tar -zxvf boost_1_54_0.tar.gz
+cd boost_1_54_0
+./bootstrap.sh
+sudo ./b2 --with=all -j 4 install
+```
 
 ## Installing
 
@@ -22,6 +35,7 @@ To get my MOOS IvP tree, you will need to do the following:
  * Add the newly generated `bin/` directory to your $PATH environmental variable
 
 ## What's Included 
+> Note that I might have disabled some MOOS app from compiling.
  * pWebSocketServer: A websocket server that forwards and receives moos mail to connected applications (see MOOSMobile)
  * iMumbleClient: A VoIP bridge for the Mumble protocol
  * uRaspiMon: A wrapper for raspbian tools to measure system temperature and throttling status
